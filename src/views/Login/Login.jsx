@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 class Login extends Component {
   state = {
     clockTime: 1,
+    show: true,
   };
   handleClick = () => {
     this.setState({
       clockTime: Math.random(),
     });
-
   };
   updateTime = () => {
     this.setState({
@@ -16,8 +16,12 @@ class Login extends Component {
     });
   };
   render() {
-    let that = this;
-    // setInterval(that.updateTime, 10000);
+    let button;
+    if (this.state.show) {
+      button = <button>点击</button>;
+    } else {
+      button = <button>不显示</button>;
+    }
     return (
       <div>
         Login
@@ -26,6 +30,7 @@ class Login extends Component {
         </Link>
         <div onClick={this.handleClick}>点击事件</div>
         <div>{this.state.clockTime}</div>
+        {button}
       </div>
     );
   }
